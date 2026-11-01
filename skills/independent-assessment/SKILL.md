@@ -26,8 +26,15 @@ filesystem, queue, write-lock, destructive-action, and Git rules remain binding.
 
 - Identify the exact campaign, source branches or commits, report versions, and
   comparison base. Record commit identifiers when available.
-- Refresh the current base before assessment. If the base moved, distinguish the
-  historical candidate result from evidence verified on the refreshed base.
+- When the comparison names a remote base, fetch that remote through the
+  project's supported Git route and pin its exact commit without checking out,
+  resetting, or rebasing the shared working directory. If refresh is unavailable,
+  record the last known commit and the evidence limit rather than claiming it is
+  current. Re-check the base before final conclusions; distinguish historical
+  candidate results from evidence verified on the refreshed base.
+- Read the full existing campaign report through supported read tools; a search
+  snippet or Inbox preview is only a locator, not the complete evidence. If full
+  content cannot be obtained, report the gap.
 - Label saved test results, benchmarks, reports, and reproductions as historical
   unless they were rerun during this assessment.
 - Treat explorer claims as leads, not facts. Report missing artifacts, ambiguous
@@ -35,8 +42,15 @@ filesystem, queue, write-lock, destructive-action, and Git rules remain binding.
 
 ## Assess each candidate
 
-Reach one outcome: **keep**, **simplify**, **defer**, or **reject**. Judge the
-candidate on all of these questions:
+Reach one outcome: **keep**, **simplify**, **defer**, or **reject**. For a branch
+that mixes changes, give its overall disposition and separate component
+decisions; a useful component does not justify keeping the whole branch. For
+each component worth keeping or simplifying, cite candidate and current-base
+files and symbols, or equivalent precise source references for non-code work.
+Explain what behavior is still missing or inadequate, excluding already merged
+equivalents, and label the supporting evidence as fresh or historical.
+
+Judge each candidate or component on all of these questions:
 
 - Does a real failure or opportunity exist on the exact source and current base?
 - Is there meaningful user benefit, and is the proposed behaviour the right
@@ -52,6 +66,15 @@ Tests are evidence about observed behaviour, not a reason to keep code. A
 technically correct candidate may still be rejected because the failure is not
 real, the benefit is weak, the design is too costly, or a simpler alternative is
 better. Keeping nothing is a valid successful assessment.
+
+When checks run, list every failed case and collection error with its suite or
+check name, observed error, and supporting classification: stale assertion, mock
+or fixture; product defect; environment problem; or uncertain. Unrelated
+current-base failures limit the evidence; they neither prove a candidate failed
+nor establish that it works. Do not classify a failure as baseline drift merely
+because no candidate was applied. State which behavior was actually exercised
+and which candidate checks remain unrun. Reuse saved output when sufficient
+rather than rerunning unrelated checks.
 
 Do not recommend speculative recovery state, background jobs, locks, retries,
 or broad architecture changes for a race or symptom that has not been
@@ -78,13 +101,15 @@ Current base: <branch and commit>
 <What, if anything, is worth retaining and why.>
 
 ## Keep or simplify
-- <candidate, decision, user benefit, correctness evidence, and smallest form>
+- <branch/component decision, user benefit, candidate/current source references,
+  observed gap, fresh or historical evidence, and smallest form>
 
 ## Defer or reject
 - <candidate, decision, evidence gap or cost, and bounded next evidence if any>
 
 ## Evidence limits
-<What was current, what was historical, and what was not rerun.>
+<What was current, what was historical, what was not rerun, and each failed
+check or collection error with its supported classification or uncertainty.>
 
 ## Next decision
 <Any separate authority or product decision required before implementation or integration.>
@@ -96,7 +121,13 @@ not implementation, integration, merge, or release authority.
 
 A supplementary destination is used only when the invocation or applicable
 configuration explicitly names it. Never hardcode a personal note, dashboard,
-folder, or machine-specific path. Do not destructively replace a valid report to
+folder, or machine-specific path. Identify the destination's publication owner
+and use its established update route. Inspect and preserve destination-only
+records before any refresh; do not overwrite them with another machine's
+snapshot. A saved source or local preview is not live delivery: verify the exact
+report identifier and current revision at the published destination before
+claiming delivery. If blocked, preserve the primary Inbox report and give one
+precise remaining owner action. Do not destructively replace a valid report to
 force publication elsewhere.
 
 End with the decisions, verification performed during this assessment, evidence
