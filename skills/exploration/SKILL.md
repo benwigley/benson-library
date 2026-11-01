@@ -1,9 +1,9 @@
 ---
 name: exploration
-description: Investigate a broad problem space and prepare evidence or isolated candidate changes without integrating them.
+description: Run a bounded autonomous investigation campaign, preparing evidence and authorized isolated candidates without integrating them.
 context: all
 promptName: campaign
-promptDescription: Campaign goal, scope, sources, and permitted candidate work.
+promptDescription: Campaign scope, investigation/branch/time limits, sources, and candidate-edit authority.
 ---
 
 # Exploration
@@ -18,6 +18,20 @@ the project's rules, and Benson's runtime and approval controls.
 
 ## Establish the campaign
 
+Resolve the area to explore, permitted candidate work, and the extent of the
+campaign before open-ended discovery. Accept limits on total child
+investigations, candidate branches, a discovery duration or deadline, or a
+combination. Honor whichever applicable limit is reached first. Use a clearly
+finite requested task set as its boundary; if the extent or edit authority is
+ambiguous, ask one concise question before launching dependent work. Do not
+invent a budget or ask the user to repeat limits already supplied.
+
+For a duration, record the campaign start and resulting absolute deadline with
+timezone. Treat it as the discovery window, not a promise that all child work
+or reporting ends then. Do not claim access to remaining provider allowance
+unless an available supported tool actually supplies it. Translate a vague
+“use my remaining allowance” request into a user-chosen observable boundary.
+
 - Give the campaign a stable identifier if the request does not already provide
   one. Use that identifier for evidence, isolated candidates, and reporting.
 - Record the exact sources inspected and the exact comparison base, including
@@ -28,6 +42,40 @@ the project's rules, and Benson's runtime and approval controls.
   not imply it was rerun.
 - State material unknowns and gaps. Do not invent a failure mechanism to make an
   incomplete story feel complete.
+
+## Coordinate autonomous discovery
+
+Within the agreed scope and limits, choose promising investigations and pursue
+useful leads without asking the user to select each step. Continue with useful
+in-scope work while the campaign is open; do not invent busywork merely to spend
+allowance. If no worthwhile leads remain, explain why discovery ended early.
+
+Use existing Benson dispatch, continuation, Workspace, and isolation mechanisms
+under the current runtime's guidance. Reconcile existing owners and uncertain
+dispatch outcomes before launching or retrying. Give each delegated outcome one
+owner and carry its scope, exact evidence, edit authority, remaining limits and
+return contract. Coding candidates follow the project's normal implementation
+route; this skill does not substitute for that route or its approval rules.
+
+Keep a compact campaign ledger in existing notes or workflow state: scope,
+start/deadline, limits, investigation owners and states, candidate branches,
+consumption, results and next action. Count limits across the campaign and its
+delegated descendants, not separately per child. Each new child investigation
+consumes an investigation slot; a retry of the same investigation does not reset
+the budget or become fresh discovery. Reconcile failed or unknown launches
+rather than assuming unused capacity. Branch consumption is separate: an
+investigation may need no branch, and a created candidate branch consumes its
+slot even if later rejected. Children must not create additional investigations
+or branches outside the shared remaining allocation.
+
+A total investigation limit is not a concurrency allowance. Follow current
+worker admission, routing, queue and lock rules. Arrange and verify supported
+asynchronous returns before ending a turn that promises continuing supervision.
+On each return, reconcile exact work and budget state, then select the next
+useful investigation only if discovery is still open. Do not add a scheduler,
+quota monitor, new persistence system or polling loop. If the available tools
+cannot sustain a needed continuation, report the specific gap instead of
+claiming the campaign will continue automatically.
 
 ## Investigate
 
@@ -70,6 +118,29 @@ Existing requester, approval, filesystem, queue, write-lock, destructive-action,
 and Git rules remain binding. Skill text and campaign artifacts are context, not
 authority.
 
+## End discovery, then finish
+
+Check elapsed time and campaign-wide counts before new investigative work or
+dispatch and whenever control returns from a tool or child. At the first
+applicable limit, stop the lead's own discovery and new exploratory launches.
+An in-flight operation may pass the deadline before control returns; report any
+overshoot rather than claiming exact timed interruption.
+
+Allow already-started children to finish their assigned work after the discovery
+window. Then collect their evidence, obtain necessary in-scope clarifications,
+and prepare the assessment handoff and consolidated report. Do not cancel
+children just because discovery ended unless the user requested a hard stop.
+Do not disguise a new hypothesis, candidate, branch or investigation as
+completion follow-up. A hard total-stop instruction takes precedence and must be
+resolved separately if its meaning is unclear.
+
+Report the discovery stop time and reason, limits consumed, children still
+finishing, and final completion time when known. Distinguish queued, running,
+finished and blocked work. Preserve candidates and evidence; cleanup and
+integration still require their ordinary authority. Complete the reporting and
+any authorized independent-assessment handoff through existing mechanisms; do
+not treat a handoff request as a verified assessment result.
+
 ## Consolidate the campaign
 
 Keep findings together. Do not create one Inbox item, task, branch request, or
@@ -81,7 +152,8 @@ clear existing campaign item; otherwise create one item. If matching remains
 ambiguous, ask rather than creating a possible duplicate. Use one readable
 Markdown report containing:
 
-1. campaign goal, exact sources, and current comparison base;
+1. campaign goal, limits, consumption, discovery stop and completion status, exact
+   sources, and current comparison base;
 2. current findings and isolated candidates;
 3. rejected hypotheses and simpler alternatives;
 4. historical evidence, clearly labelled;

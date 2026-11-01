@@ -45,11 +45,16 @@ operation.
 
 ## Example campaign
 
-Start exploration with one campaign identifier and an explicit scope:
+Start exploration with one campaign identifier, explicit scope and limits:
 
 ```text
-/skill run name:exploration prompt:"Campaign checkout-reliability-2026-11: investigate reported checkout data loss against origin/main. Candidate edits are allowed only in isolated branches; do not merge or publish."
+/skill run name:exploration prompt:"Campaign checkout-reliability-2026-11: investigate reported checkout data loss against origin/main for two hours, with at most six child investigations and three candidate branches. Let started children finish after discovery stops. Candidate edits are allowed only in isolated branches; do not merge or publish."
 ```
+
+Exploration chooses investigations autonomously within those limits. It stops
+new discovery at the first applicable limit, then collects already-started work.
+The report may finish after the discovery window. If the extent is ambiguous,
+it asks before starting. It does not measure remaining provider allowance.
 
 Then invoke assessment independently with the exact exploration sources and
 current comparison base:
