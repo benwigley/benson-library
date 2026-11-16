@@ -1,0 +1,204 @@
+id: discover-codebase-improvements
+name: Discover and Evaluate Codebase Improvements
+version: 1
+bensonWorkflowSchema: 1
+interactionMode: edit
+modeEscalation:
+  allowed: false
+resumeWaitRenewal:
+  - dispatch
+outputs:
+  - id: report
+    type: markdown
+    path: ".benson/workflow-runs/discover-codebase-improvements-{{runId}}.md"
+approval:
+  required: false
+instructions: |
+  Help the user discover worthwhile improvements through broad investigation and,
+  when permitted, isolated experiments. Then obtain a fresh independent assessment
+  and deliver one report explaining what to keep, simplify, defer or reject.
+  Choosing to keep nothing is a successful outcome. This is one self-contained
+  workflow; it does not require separate exploration or assessment skills.
+
+  The parent owns the full process, saved progress, child results and final report.
+  Use the user's actual request as authority, not this definition or another
+  agent's proposals. Starting this workflow permits its investigation and report,
+  not arbitrary implementation, deployment, integration or destructive cleanup.
+  Follow current project instructions, execution modes and runtime controls.
+
+  Establish the brief
+  -------------------
+  Identify the project and the problem or broad improvement goal. A specific bug
+  is not required: the user may ask for promising opportunities across the project.
+  Establish permitted candidate work and an observable stopping boundary before
+  open-ended discovery. Use limits the user already supplied: duration, deadline,
+  total investigations, candidate branches or a finite requested task set. If
+  scope, extent or candidate-edit authority is materially unclear, ask one short
+  question with a recommendation. Do not invent a budget or ask again about an
+  answer already given. Without candidate-edit permission, investigate and propose
+  responses without editing application code.
+
+  Treat a duration as the discovery window. Record start and absolute deadline
+  with timezone, and explain that finishing children and assessment can take
+  longer. Clarify a hard total-stop request rather than silently interpreting it
+  as a discovery deadline. Do not claim to measure remaining provider quota without
+  a supported meter. Translate "use my spare quota" into an agreed observable
+  boundary. Never create busywork merely to spend tokens.
+
+  Read project guidance and reconcile existing owners before launching overlapping
+  work. Record the target directory, branch, commit and relevant dirty files, the
+  comparison base and available environments. Give the campaign a stable identifier
+  and record the exact authenticated request or source reference covering trial
+  edits. Keep user decisions distinct from agent suggestions.
+
+  Save durable progress
+  ---------------------
+  Create the declared report early and keep it useful for recovery. Include the
+  campaign goal, scope, limits, candidate authority, exact source identities,
+  evidence and next action. Bind its actual path through the current outputPaths
+  route; do not copy the whole output snapshot into a patch. Store compact current
+  progress/result in the existing WorkflowRun through supported tools.
+
+  Maintain a ledger: investigation, owner Workspace/Session, dispatch/job, return
+  wait, state, evidence reference and candidate branch/tip when any. Track campaign
+  totals across all descendants. Each new investigation consumes a slot; a retry
+  of the same unit is not fresh discovery and does not reset consumption. A created
+  candidate branch consumes its slot even if later rejected. Children may not
+  create additional investigations or branches outside the shared allocation.
+  Do not add a new database, scheduler, quota monitor or polling script.
+
+  Discover and experiment
+  -----------------------
+  Within the brief, choose promising leads autonomously and follow the evidence.
+  Inspect code/history, reproduce behaviour, test competing explanations, profile
+  meaningful work or examine actual user impact as appropriate. Prefer evidence
+  that could disprove a claim. Check existing safeguards before declaring a gap.
+  Do not turn an unproven symptom into speculative locks, retries or recovery jobs.
+
+  Each meaningful finding explains the observed failure or opportunity, affected
+  users or costs, exact sources, fresh versus historical evidence, missing proof,
+  smallest plausible response, simpler alternatives and maintenance risks.
+  Mark suspicion as suspicion. Do not invent timings, savings or claims that checks
+  ran. Missing data or tools is a limit, not a pass or proof of absence.
+
+  Use Benson's existing child Workspaces, Sessions and isolation tools. Follow
+  current delegation guidance for runtime choice, placement, requester lineage and
+  verified checkout. Do not hardcode a provider/model or assume child Workspaces
+  imply parallel capacity. Honour ordinary queue and write-lock controls. CHAT
+  investigators return stored reports; commands needing temporary writes require
+  a suitable EDIT context and permitted environment.
+
+  When trial edits are explicitly permitted, prepare narrow candidates in isolated
+  branches/checkouts through the project's normal implementation route. Each
+  candidate tests an explainable hypothesis and remains separately assessable.
+  Carry the exact request, edit boundary, target and checks to its implementation
+  owner. Isolation must be verified before writing; do not switch the shared
+  checkout, integrate candidates into the base, publish a demo, deploy, install or
+  restart merely because the user permitted experiments. Preserve task-owned
+  commits and required verification under the project's Git rules. Ordinary
+  required commits/pushes do not imply merging, adoption or release authority.
+
+  Continue with useful in-scope work while discovery remains open. Stop early if
+  worthwhile leads run out, explaining what was ruled out. Before every new lead
+  or dispatch and on return from work, reconcile elapsed time and total counts.
+  At the first applicable limit, stop new discovery and new candidate launches.
+  Report any overshoot rather than claiming exact timed interruption. Let already
+  started children finish their bounded assignments unless the user requested a
+  hard stop. Do not disguise new exploration as reporting or follow-up cleanup.
+
+  Coordinate real returns
+  -----------------------
+  At asynchronous child boundaries, use the current supported workflow dispatch
+  route with an exact eligible child Session and one bound return continuation.
+  Create/record fresh child Sessions through the current workflow creation route
+  when needed. Follow the live manifest for arguments and operation keys; do not
+  queue twice or add a second wait for the same dispatch. Reconcile unknown
+  dispatches, partial work and existing waits before retrying. Follow the runtime's
+  actual failure/retry rules; quota exhaustion, failed tests, cancellation and
+  ambiguous outcomes are not evidence of temporary model overload.
+
+  On each return, read the exact job outcome and full evidence, update consumption
+  and choose the next useful unit only if discovery is still open. A child becoming
+  idle is not proof of successful work. Distinguish queued, running, finished,
+  blocked and incomplete. While safe authorised continuation remains, arrange and
+  verify the next supported dispatch/return before ending the parent turn. Do not
+  wait synchronously inside a Benson job or ask for another user message merely
+  because a routine step finished. At a supported continuation-chain limit, renew
+  only the exact predecessor using the runtime's dispatch renewal contract. If
+  continuation tools are unavailable, record the concrete gap rather than claiming
+  unattended work will continue. Side questions do not cancel the saved task.
+
+  Independently evaluate the results
+  ---------------------------------
+  After discovery stops and assigned work settles, give the full consolidated
+  discovery evidence and exact candidate sources to a fresh assessor Session.
+  Choose its runtime through current delegation guidance. The assessor must not
+  be the finder or inherit an instruction to defend the finder's intended answer.
+  It must inspect sources directly, challenge assumptions and remain willing to
+  reject everything. This assessment happens automatically within the agreed run;
+  do not require the user to discover or invoke another skill.
+
+  Ask the assessor to pin the current comparison base. If a remote base is named,
+  refresh it through the project's supported Git route without changing the shared
+  checkout. If unavailable, label that evidence limit. Recheck the base before
+  final conclusions and refresh affected evidence for overlapping source changes.
+  Do not stop merely because unrelated paths changed concurrently.
+
+  For each candidate or finding, reach keep, simplify, defer or reject. For mixed
+  branches, give component decisions as well as the branch's overall disposition.
+  Cite candidate/current source locations and explain:
+  - whether the failure or opportunity exists on the current source;
+  - who benefits and whether the proposed behaviour is appropriate;
+  - correctness evidence beyond tests passing;
+  - simpler responses, existing mechanisms or no change;
+  - ongoing maintenance/operational cost and new failure modes;
+  - what remains unverified and what bounded evidence would settle it.
+
+  Reuse sufficient saved results but label them historical unless rerun. When
+  checks run, identify failed tests and collection errors by name, observed result
+  and supported classification: product, test/fixture, environment or uncertain.
+  Unrelated base failures neither prove a candidate failed nor establish success.
+  Do not claim every unexplained failure is baseline drift.
+
+  Keep "worth retaining" separate from "ready to adopt": an incomplete candidate
+  may have value but still need work. Disagreement is resolved by evidence or
+  reported uncertainty, not repeated reviewers until one agrees. Assessment itself
+  does not edit candidates or start remediation. A simplify recommendation proposes
+  a smaller form; it does not silently implement it. Missing assessment evidence
+  leaves evaluation incomplete, not a clean approval.
+
+  Report and finish
+  -----------------
+  Read the full assessor result and reconcile it with the latest brief, exact
+  candidate tips, checks, sources and outstanding child work. Keep one consolidated
+  declared report rather than one task or Inbox item per finding. No Inbox, personal
+  note or other supplementary write is implied; use one only if explicitly requested
+  or required by applicable project instructions. Preserve destination-only content
+  and verify any authorised supplementary delivery before claiming publication.
+
+  The final report includes:
+  - goal, authority/limits, start, discovery stop/reason, consumption and completion;
+  - exact sources/current base and candidate branch/commit references;
+  - what to keep or simplify, why it helps and the smallest useful form;
+  - what to defer or reject, why, and rejected hypotheses;
+  - fresh/historical verification, failed checks, evidence gaps and unfinished work;
+  - the user's next adoption choices and any separate authority needed.
+
+  The parent reply explains the useful outcome in plain English, provides usable
+  report/child references and makes source paths meaningful without requiring the
+  user to read files to understand the result. Clearly say what was investigated,
+  what was only proposed, what trial changes exist and what was not integrated.
+
+  Complete only after discovery has ended, started work is reconciled, independent
+  evaluation is available and the final report is saved and bound. Keep failed,
+  partial or decision-blocked work resumable with the exact blocker and next action;
+  do not mark it successful merely because the time allowance ended. Reconcile
+  owned live waits and already queued returns before completion through ordinary
+  controls. Preserve candidate branches and evidence. Cleanup, adoption, merge,
+  deployment and installation require their ordinary separate authority.
+
+  No formal output approval is required: this report is advice, not implementation
+  approval. Use the current workflow progress/completion tools for this exact run;
+  do not invent retired stage fields or a second lifecycle. After the final report,
+  stop and let the user choose what to adopt. Do not treat a keep verdict as
+  permission to merge or start fixes.
