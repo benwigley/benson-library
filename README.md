@@ -6,7 +6,7 @@ Portable skills and workflows for Benson.
 
 | Skill | Use it to |
 | --- | --- |
-| [`codebase-audit`](skills/codebase-audit/SKILL.md) — **Find worthwhile code improvements** | Send focused checks to separate agents, verify the findings, and return one report before choosing fixes. |
+| [`codebase-audit`](skills/codebase-audit/SKILL.md) — **Codebase Improvement Audit** | Send focused checks to separate agents, verify the findings, and return one report before choosing fixes. |
 | [`exploration`](skills/exploration/SKILL.md) | Investigate a broad problem space, test hypotheses, and, when the current run is explicitly authorized to edit, prepare isolated candidate changes without integrating them. |
 | [`independent-assessment`](skills/independent-assessment/SKILL.md) | Independently decide which explored candidates are worth keeping, simplifying, deferring, or rejecting against an exact current base. |
 

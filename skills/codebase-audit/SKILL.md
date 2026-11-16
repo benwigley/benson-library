@@ -1,13 +1,13 @@
 ---
 name: codebase-audit
-title: Find worthwhile code improvements
+title: Codebase Improvement Audit
 description: Investigate a codebase through focused child audits, verify findings, and report worthwhile improvements before the user chooses what to fix.
 context: coding
 promptName: audit
 promptDescription: Project, areas to check, investigation limits, and available evidence.
 ---
 
-# Find worthwhile code improvements
+# Codebase Improvement Audit
 
 Use the user's request as the audit brief:
 
